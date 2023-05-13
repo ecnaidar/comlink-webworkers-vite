@@ -1,0 +1,38 @@
+{
+  "name": "template",
+  "version": "0.0.0",
+  "private": "true",
+  "type": "module",
+  "scripts": {
+    "build": "tsc && vite build",
+    "dev": "vite",
+    "preinstall": "npx only-allow pnpm",
+    "preview": "vite preview"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,cjs}": [
+      "rome format --write",
+      "rome check"
+    ],
+    "package.json": "pnpm sort-package-json"
+  },
+  "dependencies": {
+    "comlink": "^4.4.1",
+    "rc-basic": "1.1.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "6.11.1",
+    "tilg": "0.1.1"
+  },
+  "devDependencies": {
+    "@types/react": "18.2.6",
+    "@types/react-dom": "18.2.4",
+    "@vitejs/plugin-react-swc": "3.3.1",
+    "lint-staged": "13.2.2",
+    "postcss": "8.4.23",
+    "rome": "12.0.0",
+    "sort-package-json": "2.4.1",
+    "typescript": "5.0.4",
+    "vite": "4.3.5"
+  }
+}
