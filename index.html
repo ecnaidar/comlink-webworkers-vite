@@ -5,6 +5,45 @@
     <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
+    <style>
+      .red {
+        background-color: #ff324a;
+      }
+      .blue {
+        background-color: #206eff;
+      }
+      .green {
+        background-color: #31ffa6;
+      }
+
+      body {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        padding: 1rem;
+        font-family: "Circular", "sans-serif";
+        -webkit-font-smoothing: antialiased;
+      }
+
+      section {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        width: 100%;
+        max-width: 18rem;
+        margin: auto;
+        text-align: center;
+      }
+      .box {
+        width: 2.5em;
+        height: 2.5em;
+        margin-top: auto;
+        margin-bottom: auto;
+        border-radius: 50%;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>

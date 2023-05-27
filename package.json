@@ -4,8 +4,8 @@
   "private": "true",
   "type": "module",
   "scripts": {
+    "start": "vite",
     "build": "tsc && vite build",
-    "dev": "vite",
     "preinstall": "npx only-allow pnpm",
     "preview": "vite preview"
   },
@@ -17,6 +17,8 @@
     "package.json": "pnpm sort-package-json"
   },
   "dependencies": {
+    "@types/animejs": "^3.1.7",
+    "animejs": "^3.2.1",
     "comlink": "^4.4.1",
     "rc-basic": "1.1.0",
     "react": "18.2.0",

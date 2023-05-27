@@ -1,13 +1,16 @@
-// longProcesses/count.ts
+/// <reference lib="webworker" />
+declare const self: DedicatedWorkerGlobalScope;
+
 import { expose } from "comlink";
 import { longFn } from "./work";
 
 const MyWorker = {
-  executeWork: (message: string) => {
-    console.log(message);
-    console.time("worker:comlink");
+  executeWork: (coreIdx: number) => {
+    console.log(`worker:comlink:${coreIdx}:init`);
+    console.time(`worker:comlink:${coreIdx}`);
     longFn();
-    console.timeEnd("worker:comlink");
+    console.timeEnd(`worker:comlink:${coreIdx}`);
+    return coreIdx;
   },
 };
 
