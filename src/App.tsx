@@ -1,11 +1,12 @@
-import { Fragment, StrictMode, useEffect } from "react";
+import React from "react";
 import { createRoot } from "react-dom/client";
 import useDebugRender from "tilg";
-import { longFn } from "./worker/work";
-import { BasicAnimation } from "./animation";
 
-import { wrap, Remote, releaseProxy } from "comlink";
+import { wrap, Remote, proxy } from "comlink";
 import type { MyWorkerAPI } from "./worker/comlink.worker";
+import { longFn } from "./worker/work";
+
+import { BasicAnimation } from "./animation";
 import { forEachAvailableCore } from "./worker/threads";
 
 export const createStandardWorker = () => {
@@ -70,13 +71,34 @@ export default function App() {
           onClick={() => {
             forEachAvailableCore(async (coreIdx) => {
               const worker = createComlinkWorker();
-              await worker.executeWork(coreIdx);
-
+              await worker.workerLongFn(coreIdx);
               console.log(`main:comlink:${coreIdx}`);
             });
           }}
         >
           Comlink
+        </button>
+
+        <button
+          type="button"
+          onClick={() => {
+            forEachAvailableCore(async (coreIdx) => {
+              const worker = createComlinkWorker();
+              await worker.workerLongFn(
+                coreIdx,
+                proxy(function () {
+                  console.log(
+                    "🧙‍♂️ magically running off main thread",
+                    window.document.getElementById("root")
+                  );
+                })
+              );
+
+              console.log(`main:comlink:${coreIdx}`);
+            });
+          }}
+        >
+          Proxy
         </button>
       </div>
     </section>
@@ -84,8 +106,4 @@ export default function App() {
 }
 const container = document.getElementById("root") as HTMLElement;
 const root = createRoot(container);
-root.render(
-  <StrictMode>
-    <App />
-  </StrictMode>
-);
+root.render(<App />);

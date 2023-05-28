@@ -1,5 +1,7 @@
 export const longFn = () => {
-  for (let i = 0; i < 500000000; i++) {
-    Math.sqrt(Math.random() * 100);
-  }
+  fibonacci(43);
 };
+
+function fibonacci(n: number): number {
+  return n < 1 ? 0 : n <= 2 ? 1 : fibonacci(n - 1) + fibonacci(n - 2);
+}

@@ -8,6 +8,5 @@ self.onmessage = (e: MessageEvent<string>) => {
   console.time(`worker:standard:${e.data}`);
   longFn();
   console.timeEnd(`worker:standard:${e.data}`);
-
   self.postMessage(e.data);
 };

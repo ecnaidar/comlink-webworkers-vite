@@ -4,7 +4,7 @@
     "indentSize": 2,
     "indentStyle": "space",
     "formatWithErrors": true,
-    "lineWidth": 80,
+    "lineWidth": 70,
     "ignore": ["dist/**/*.js"]
   },
   "linter": {
